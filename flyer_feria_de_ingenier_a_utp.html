@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feria de Ingeniería de Sistemas e Informática UTP Piura 2026</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        utp: {
+                            red: '#C8102E',
+                            darkred: '#9E0B22',
+                            lightred: '#F33F5E',
+                            dark: '#0A0B10',
+                            card: '#141622',
+                            gray: '#F3F4F6'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        };
+    </script>
+    <!-- Google Fonts & FontAwesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #FFFFFF;
+            overflow-x: hidden;
+        }
+        .glow-red {
+            text-shadow: 0 0 20px rgba(200, 16, 46, 0.15);
+        }
+        .utp-gradient {
+            background: linear-gradient(135deg, #C8102E 0%, #9E0B22 100%);
+        }
+        .card-glow {
+            transition: all 0.3s ease;
+        }
+        .card-glow:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px -10px rgba(200, 16, 46, 0.15);
+            border-color: #C8102E;
+        }
+    </style>
+</head>
+<body class="text-gray-800 antialiased bg-white">
+
+    <!-- Interactive Background Canvas with UTP Corporate Colors for Light Theme -->
+    <canvas id="particleCanvas" class="fixed top-0 left-0 w-full h-full -z-10 pointer-events-none opacity-20"></canvas>
+
+    <!-- Header Navigation -->
+    <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-gray-100">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <!-- Official Logo Provided by User -->
+                <img src="https://scontent.flim6-3.fna.fbcdn.net/v/t39.30808-6/353614983_674002638105441_8607951844457866335_n.png?stp=dst-png&cstp=mx1200x1200&ctp=s1200x1200&_nc_cat=1&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeEofQ3VTm6gHR38MqWGtUTMbisploTb36RuKymWhNvfpOrXWxw5s_24Rn_pUtTlHb5qXPTI3mfYt_xxTj1RJ6r0&_nc_ohc=V6rWmGZE0aQQ7kNvwE3O6j3&_nc_oc=Adoxyyrq_ALVEUGxo2N1SifASkV1jTiq4TFS8Fncsjj6_hEQ2mv-t3qg3dtxQfpIGZQ&_nc_zt=23&_nc_ht=scontent.flim6-3.fna&_nc_gid=EGmyQEqIpol-WRv5P5FCSw&_nc_ss=7b2a8&oh=00_AQBBC5HCbBj3ORzEFTiI9wosNd-QlxpOdVj5rpe2nu9bHw&oe=6A4B9B3C" 
+                     alt="Logo UTP" 
+                     class="h-12 w-12 object-contain rounded-lg border border-gray-200" 
+                     onerror="this.onerror=null; this.src='https://placehold.co/100x100/C8102E/FFFFFF?text=UTP';">
+                <div class="h-6 w-px bg-gray-200"></div>
+                <div>
+                    <span class="text-xs font-black tracking-widest text-gray-900 block">UTP PIURA</span>
+                    <span class="text-[9px] text-gray-500 block uppercase">Ingeniería de Sistemas e Informática</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero / Convocatoria Section -->
+    <section id="inicio" class="relative pt-12 pb-16 px-4">
+        <div class="absolute inset-0 bg-gradient-to-b from-utp-red/5 via-transparent to-white -z-10"></div>
+        
+        <div class="max-w-4xl mx-auto text-center space-y-8">
+            <!-- Badge Piura -->
+            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-gray-50 border border-gray-100 text-xs text-gray-600">
+                <span class="w-2 h-2 rounded-full bg-utp-red animate-ping"></span>
+                <span>Convocatoria Abierta • Solo Comunidad UTP Sede Piura</span>
+            </div>
+
+            <!-- Main Title -->
+            <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight leading-tight">
+                <span class="block text-gray-950">Feria de Ingeniería de</span>
+                <span class="bg-gradient-to-r from-utp-red via-utp-darkred to-utp-lightred bg-clip-text text-transparent glow-red">
+                    Sistemas e Informática
+                </span>
+            </h1>
+
+            <!-- ODS Subtitle Banner -->
+            <div class="inline-flex py-3 px-6 rounded-2xl bg-gradient-to-r from-gray-50 via-white to-gray-50 border border-gray-100 mx-auto">
+                <p class="text-xs sm:text-sm text-gray-600 font-semibold tracking-wide flex items-center gap-2">
+                    <span class="text-utp-red"><i class="fa-solid fa-leaf"></i> Enfoque ODS</span> 
+                    <span class="text-gray-300">•</span>
+                    <span class="text-gray-900"><i class="fa-solid fa-lightbulb"></i> Innovación Tecnológica</span>
+                </p>
+            </div>
+
+            <p class="text-sm sm:text-base text-gray-600 font-light leading-relaxed max-w-2xl mx-auto">
+                ¡Demuestra el impacto de tu talento tecnológico en la UTP Sede Piura! Diseña y presenta tu proyecto enfocado en sostenibilidad (ODS) e innovación para competir frente a tus compañeros y docentes de la carrera.
+            </p>
+
+            <!-- Metadata Cards (Important Dates & Place) -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl mx-auto pt-2">
+                <!-- Date & Hour -->
+                <div class="bg-white border border-gray-100 p-4 rounded-xl flex items-center space-x-4 shadow-sm">
+                    <div class="w-10 h-10 rounded-lg bg-utp-red/10 flex items-center justify-center text-utp-red flex-shrink-0">
+                        <i class="fa-regular fa-calendar text-lg"></i>
+                    </div>
+                    <div class="text-left">
+                        <p class="text-[9px] text-gray-400 uppercase tracking-wider font-semibold">Cierre de Inscripciones</p>
+                        <p class="text-sm font-bold text-gray-900">Hasta el 07 de Julio, 2026</p>
+                        <p class="text-xs text-utp-red">Feria: Jueves 16 de Julio, 8:00 AM</p>
+                    </div>
+                </div>
+
+                <!-- Location Piura -->
+                <div class="bg-white border border-gray-100 p-4 rounded-xl flex items-center space-x-4 shadow-sm">
+                    <div class="w-10 h-10 rounded-lg bg-utp-red/10 flex items-center justify-center text-utp-red flex-shrink-0">
+                        <i class="fa-solid fa-location-dot text-lg"></i>
+                    </div>
+                    <div class="text-left">
+                        <p class="text-[9px] text-gray-400 uppercase tracking-wider font-semibold">Lugar de Exposición</p>
+                        <p class="text-sm font-bold text-gray-900">Campus UTP Piura</p>
+                        <p class="text-xs text-gray-500">Av. Vice (Costado de Real Plaza)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Integrated Timer & CTA Section -->
+    <section class="py-8 bg-gray-50 border-y border-gray-100">
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="bg-white p-6 sm:p-8 rounded-3xl border border-gray-100 shadow-sm flex flex-col md:flex-row items-center justify-between gap-6">
+                <!-- Left: Timer Info -->
+                <div class="space-y-3 text-center md:text-left flex-1">
+                    <span class="text-[10px] uppercase tracking-widest text-utp-red font-bold block">Tiempo restante para registrar tu idea</span>
+                    <div class="grid grid-cols-4 gap-2 max-w-xs mx-auto md:mx-0">
+                        <div class="bg-gray-50 p-2 rounded-lg border border-gray-100 text-center">
+                            <span id="countdown-days" class="block text-lg sm:text-2xl font-black text-utp-red">00</span>
+                            <span class="text-[8px] text-gray-400 uppercase tracking-wider">Días</span>
+                        </div>
+                        <div class="bg-gray-50 p-2 rounded-lg border border-gray-100 text-center">
+                            <span id="countdown-hours" class="block text-lg sm:text-2xl font-black text-gray-800">00</span>
+                            <span class="text-[8px] text-gray-400 uppercase tracking-wider">Hrs</span>
+                        </div>
+                        <div class="bg-gray-50 p-2 rounded-lg border border-gray-100 text-center">
+                            <span id="countdown-mins" class="block text-lg sm:text-2xl font-black text-gray-800">00</span>
+                            <span class="text-[8px] text-gray-400 uppercase tracking-wider">Min</span>
+                        </div>
+                        <div class="bg-gray-50 p-2 rounded-lg border border-gray-100 text-center">
+                            <span id="countdown-secs" class="block text-lg sm:text-2xl font-black text-utp-red animate-pulse">00</span>
+                            <span class="text-[8px] text-gray-400 uppercase tracking-wider">Seg</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Direct CTA Registration Button -->
+                <div class="w-full md:w-auto text-center md:text-right">
+                    <a href="https://forms.cloud.microsoft/r/yNApZXcqry?origin=lprLink" target="_blank" 
+                       class="inline-flex items-center justify-center gap-3 bg-utp-red hover:bg-utp-darkred text-white font-extrabold px-8 py-4 rounded-full text-sm transition-all transform hover:scale-105 shadow-lg shadow-utp-red/20 w-full sm:w-auto">
+                        <i class="fa-solid fa-trophy"></i> Inscribir mi Proyecto Aquí
+                    </a>
+                    <span class="block text-[10px] text-gray-400 mt-2">Forms Oficial de Registro • Sede Piura</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ODS & Innovation focus areas -->
+    <section class="py-16 max-w-5xl mx-auto px-4">
+        <div class="text-center mb-10 space-y-2">
+            <h2 class="text-2xl sm:text-3xl font-bold text-gray-900">Líneas de Innovación para tus Proyectos</h2>
+            <div class="w-16 h-1 bg-utp-red mx-auto rounded-full"></div>
+            <p class="text-xs sm:text-sm text-gray-500 max-w-xl mx-auto">Presenta tu propuesta y destaca en cualquiera de los siguientes enfoques de desarrollo sostenible:</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- Focus 1 -->
+            <div class="bg-white border border-gray-100 p-6 rounded-2xl flex flex-col justify-between shadow-sm card-glow">
+                <div>
+                    <div class="w-10 h-10 bg-utp-red/10 rounded-xl flex items-center justify-center text-utp-red mb-4">
+                        <i class="fa-solid fa-earth-americas text-lg"></i>
+                    </div>
+                    <h3 class="text-base font-bold text-gray-900 mb-2">Sostenibilidad (ODS)</h3>
+                    <p class="text-xs text-gray-500 leading-relaxed">
+                        Sistemas diseñados para proteger el medio ambiente, optimizar el uso de recursos locales y proponer alternativas energéticas limpias para la región Piura.
+                    </p>
+                </div>
+                <span class="text-[9px] text-utp-red font-semibold mt-4 block uppercase tracking-wider">Línea de Sostenibilidad</span>
+            </div>
+
+            <!-- Focus 2 -->
+            <div class="bg-white border border-gray-100 p-6 rounded-2xl flex flex-col justify-between shadow-sm card-glow">
+                <div>
+                    <div class="w-10 h-10 bg-utp-red/10 rounded-xl flex items-center justify-center text-utp-red mb-4">
+                        <i class="fa-solid fa-lightbulb text-lg"></i>
+                    </div>
+                    <h3 class="text-base font-bold text-gray-900 mb-2">Innovación Tecnológica</h3>
+                    <p class="text-xs text-gray-500 leading-relaxed">
+                        Implementación de software robusto, arquitecturas en la nube, soluciones móviles o Inteligencia Artificial para resolver desafíos actuales de conectividad e infraestructura.
+                    </p>
+                </div>
+                <span class="text-[9px] text-gray-700 font-semibold mt-4 block uppercase tracking-wider">Desarrollo Tecnológico</span>
+            </div>
+
+            <!-- Focus 3 -->
+            <div class="bg-white border border-gray-100 p-6 rounded-2xl flex flex-col justify-between shadow-sm card-glow">
+                <div>
+                    <div class="w-10 h-10 bg-utp-red/10 rounded-xl flex items-center justify-center text-utp-red mb-4">
+                        <i class="fa-solid fa-users text-lg"></i>
+                    </div>
+                    <h3 class="text-base font-bold text-gray-900 mb-2">Impacto Social</h3>
+                    <p class="text-xs text-gray-500 leading-relaxed">
+                        Tecnologías orientadas a la inclusión, la educación digital de calidad, la salud y optimización de los servicios básicos en nuestra comunidad piurana.
+                    </p>
+                </div>
+                <span class="text-[9px] text-utp-red font-semibold mt-4 block uppercase tracking-wider">Enfoque Social</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Simplified Footer -->
+    <footer class="bg-gray-50 py-8 border-t border-gray-100 text-center text-gray-500 text-xs">
+        <div class="max-w-4xl mx-auto px-4 space-y-4">
+            <div class="flex items-center justify-center space-x-2">
+                <span class="font-extrabold text-white bg-utp-red px-2 py-0.5 rounded tracking-widest text-[10px]">UTP PIURA</span>
+                <span class="text-gray-300">|</span>
+                <span class="uppercase tracking-wider font-semibold text-gray-600 text-[10px]">Sistemas e Informática 2026</span>
+            </div>
+            <p>© 2026 Universidad Tecnológica del Perú - Sede Piura. Convocatoria y participación de caracter interno.</p>
+        </div>
+    </footer>
+
+    <!-- SCRIPT LOGIC -->
+    <script>
+        // 1. Countdown Timer Logic (July 7, 2026 23:59:59)
+        const targetDate = new Date("July 7, 2026 23:59:59").getTime();
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const difference = targetDate - now;
+
+            if (difference < 0) {
+                document.getElementById("countdown-days").innerText = "00";
+                document.getElementById("countdown-hours").innerText = "00";
+                document.getElementById("countdown-mins").innerText = "00";
+                document.getElementById("countdown-secs").innerText = "00";
+                return;
+            }
+
+            const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+            document.getElementById("countdown-days").innerText = days < 10 ? '0' + days : days;
+            document.getElementById("countdown-hours").innerText = hours < 10 ? '0' + hours : hours;
+            document.getElementById("countdown-mins").innerText = minutes < 10 ? '0' + minutes : minutes;
+            document.getElementById("countdown-secs").innerText = seconds < 10 ? '0' + seconds : seconds;
+        }
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        // 2. Interactive Canvas Particle Background (UTP Corporate Color palette: Red and Dark Slate for Light theme)
+        const canvas = document.getElementById('particleCanvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+        let mouse = { x: null, y: null, radius: 130 };
+
+        function initCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            createParticles();
+        }
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2 + 0.5;
+                this.speedX = (Math.random() - 0.5) * 0.4;
+                this.speedY = (Math.random() - 0.5) * 0.4;
+                // Exclusively Red UTP and Soft Grey/Dark particles for light theme visibility
+                this.baseColor = Math.random() > 0.45 ? '#C8102E' : '#374151';
+            }
+
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+
+                if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+                if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+
+                if (mouse.x !== null && mouse.y !== null) {
+                    let dx = this.x - mouse.x;
+                    let dy = this.y - mouse.y;
+                    let distance = Math.sqrt(dx * dx + dy * dy);
+                    if (distance < mouse.radius) {
+                        let force = (mouse.radius - distance) / mouse.radius;
+                        let directionX = dx / distance;
+                        let directionY = dy / distance;
+                        this.x += directionX * force * 1.5;
+                        this.y += directionY * force * 1.5;
+                    }
+                }
+            }
+
+            draw() {
+                ctx.fillStyle = this.baseColor;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function createParticles() {
+            particles = [];
+            let numberOfParticles = (canvas.width * canvas.height) / 22000;
+            numberOfParticles = Math.min(numberOfParticles, 80);
+            for (let i = 0; i < numberOfParticles; i++) {
+                particles.push(new Particle());
+            }
+        }
+
+        function connectParticles() {
+            let maxDistance = 110;
+            for (let a = 0; a < particles.length; a++) {
+                for (let b = a; b < particles.length; b++) {
+                    let dx = particles[a].x - particles[b].x;
+                    let dy = particles[a].y - particles[b].y;
+                    let distance = Math.sqrt(dx * dx + dy * dy);
+
+                    if (distance < maxDistance) {
+                        let opacity = 1 - (distance / maxDistance);
+                        ctx.strokeStyle = `rgba(200, 16, 46, ${opacity * 0.12})`;
+                        ctx.lineWidth = 0.8;
+                        ctx.beginPath();
+                        ctx.moveTo(particles[a].x, particles[a].y);
+                        ctx.lineTo(particles[b].x, particles[b].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (let i = 0; i < particles.length; i++) {
+                particles[i].update();
+                particles[i].draw();
+            }
+            connectParticles();
+            requestAnimationFrame(animate);
+        }
+
+        window.addEventListener('resize', initCanvas);
+        window.addEventListener('mousemove', (e) => { mouse.x = e.clientX; mouse.y = e.clientY; });
+        window.addEventListener('mouseleave', () => { mouse.x = null; mouse.y = null; });
+        window.addEventListener('touchmove', (e) => { if (e.touches.length > 0) { mouse.x = e.touches[0].clientX; mouse.y = e.touches[0].clientY; } });
+        window.addEventListener('touchend', () => { mouse.x = null; mouse.y = null; });
+
+        window.onload = function() {
+            initCanvas();
+            animate();
+        };
+    </script>
+</body>
+</html>
